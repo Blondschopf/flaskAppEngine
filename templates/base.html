@@ -6,7 +6,13 @@
     </head>
     <body>
         <header>
-            <h2>{{title}}</h2>
+            <h2 id="title">{{title}}</h2>
+            <ul id="main-menu">
+                <a href="/"><li>Home</li></a>
+                <a href="/insert"><li>Insert</li></a>
+                <a href="/check"><li>Check</li></a>
+                <a href="/users"><li>Users</li></a>
+            </ul>
         </header>
         <div id="content">
             {% block content %}

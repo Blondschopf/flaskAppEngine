@@ -26,3 +26,18 @@ footer{
 h1{
     color: red;
 }
+
+#title{
+    display: inline;
+    width: 50%;
+}
+
+#main-menu{
+    list-style: none;
+    display: flex;
+    float: right;
+}
+
+#main-menu a{
+    padding: .5em 1em;
+}

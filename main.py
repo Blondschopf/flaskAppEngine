@@ -1,6 +1,7 @@
 from flask import Flask, redirect, url_for, render_template, request, redirect
 from flask_mysqldb import MySQL
 import yaml
+from flask_login import LoginManager
 
 app = Flask(__name__)
 
@@ -15,7 +16,7 @@ mysql = MySQL(app)
 
 @app.route("/")
 def home():
-  return render_template("index.html", title="Home", content="Dude")
+  return render_template("index.html", title="Home", content="Home")
 
 @app.route("/insert", methods=["GET", "POST"])
 def insert():
@@ -38,6 +39,15 @@ def insert():
     return redirect(url_for("users"))
 
   return render_template("insert.html", title="insert")
+
+@app.route("/delete/<string:id>")
+def delete(id):
+  cursor = mysql.connection.cursor()
+  cursor.execute("DELETE FROM users WHERE id = %s", (id))
+  mysql.connection.commit()
+  cursor.close()
+  return redirect(url_for("home"))
+
 
 @app.route("/check", methods=["GET", "POST"])
 def check():
